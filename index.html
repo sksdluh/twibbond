@@ -16,13 +16,180 @@
     <link rel="apple-touch-icon" sizes="144x144" href="img/fav-144.png">
     <link rel="manifest" href="pwa-manifest.json">
     <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+    button, label, canvas, div {
+      box-sizing: border-box;
+    }
+
+    
+
+
+
+
+    #input-file {
+      position: absolute;
+      left: -10000px;
+    }
+
+    #preview {
+      border: 1px solid #eee;
+      margin: 10px 0;
+      background: #eee;
+      width: 100%;
+    }
+
+    .frame-option {
+      padding: 10px;
+      line-height: 0;
+      width: 25%;
+      background: transparent;
+      border: 0;
+    }
+
+    .frame-option:focus {
+      border: 1px solid #669ada;
+      outline: none;
+      position: relative;
+      padding: 9px;
+      border-radius: 10px;
+    }
+
+    .frame-option img {
+      border-radius: 5px;
+      background-image: url(./placeholder.png);
+      background-size: 100% 100%;
+      pointer-events: none;
+    }
+
+    .frame-option:not(:first-child) {
+      margin-left: -1px;
+    }
+
+    .wrapper {
+      width: 100%;
+      padding: 10px;
+      max-width: 360px;
+      min-width: 240px;
+      margin: 0 auto;
+    }
+
+    .action {
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      color: #669ada;
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 1px solid;
+      display: block;
+      text-align: center;
+    }
+
+    .action[href=''] {
+      display: none;
+    }
+
+    .buttons {
+      flex-wrap: wrap;
+      display: flex;
+      margin-bottom: 10px;
+    }
+  </style>
     <script type='text/javascript' src="js/main.js"></script>
 </head>
 <body>
-    <div class="content">
-        <img src="img/fav-192.png" alt="Red Cherry">
-        <h1>Red Cherry is here :)</h1>
-        <a href="https://redcherry.ir">redcherry.ir</a>
+    <article>
+    
+    <h1>TWIBBON GENERATOR</h1>
+
+    <p>This is a website where you can add photos to frames.</p>
+
+    
+    <div class="wrapper">
+    <!--
+    <label class="action">
+      <input type="file" id="input-file" accept="image/*">
+      Select Image
+    </label>
+    -->
+    <canvas id="preview" width="500" height="500" title="Preview"></canvas><br>
+    <div class="buttons">
+      <button type="button" class="frame-option">
+        <img src="./frame-01.png" alt="Frame option 1" width="100%">
+      </button>
+      <button type="button" class="frame-option">
+        <img src="./frame-02.png" alt="Frame option 2" width="100%">
+      </button>
+      <button type="button" class="frame-option">
+        <img src="./frame-03.png" alt="Frame option 3" width="100%">
+      </button>
+      <button type="button" class="frame-option">
+        <img src="./frame-04.png" alt="Frame option 4" width="100%">
+      </button>
     </div>
+    <label class="action">
+      <input type="file" id="input-file" accept="image/*">
+      Select Image
+    </label>
+  </br>
+    <a download="twibbon.png" class="action" id="download-link" href="">Save Twibbon</a>
+    <img src="./placeholder.png" alt="" width="1" id="placeholder" hidden>
+  </div>
+
+  <script type="text/javascript">
+    const input = document.getElementById('input-file')
+    const canvas = document.getElementById('preview')
+    const context = canvas.getContext('2d')
+    const ph = document.getElementById('placeholder')
+    const dlLink = document.getElementById('download-link')
+    dlLink.hidden = true
+
+    input.addEventListener('change', drawImageFromInput)
+
+    function drawImageFromInput (callback) {
+      context.clearRect(0, 0, 500, 500)
+
+      if (input.files.length === 0) {
+        context.drawImage(ph, 0, 0, 500, 500)
+        if (typeof callback === 'function') callback()
+      } else {
+        const img = new Image()
+        img.addEventListener('load', function() {
+          context.drawImage(img, 0, 0, 500, 500)
+          for(var optionImage of document.querySelectorAll('.frame-option img')) {
+            optionImage.style.backgroundImage = `url("${img.src}")`
+          }
+
+          if (typeof callback === 'function') callback()
+        })
+        img.src = URL.createObjectURL(input.files[0])
+      }
+
+    }
+
+    function prepareDownloadLink () {
+      if (input.files[0]) {
+        dlLink.setAttribute('download', input.files[0].name.replace(/\.\w+$/, '-framed.png') ) }
+      dlLink.hidden = false
+      dlLink.href = canvas.toDataURL()
+    }
+
+    for (var button of document.querySelectorAll('.frame-option')) {
+      button.addEventListener('click', function (event) {
+        drawImageFromInput(function () {
+          const image = event.target.querySelector('img')
+          context.drawImage(image, 0, 0, 500, 500)
+          prepareDownloadLink()
+        })
+      })
+    }
+
+    placeholder.onload = drawImageFromInput
+  </script>
+    
+  </article>
+  <footer>
+  <p><a target="_blank" rel="noopener" href="https://www.facebook.com/bungferry.wa">Copyright © 2023 Ferry Ayunda.</a></p>
+</footer>
 </body>
 </html>
