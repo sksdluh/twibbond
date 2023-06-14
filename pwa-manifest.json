@@ -1,7 +1,7 @@
 {
-    "name": "RedCherry",
-    "short_name": "RedCherry",
-    "description": "RedCherry Simple PWA",
+    "name": "Twibbon App",
+    "short_name": "Twibbon",
+    "description": "This is a website where you can add photos to frames.",
     "icons": [
         {
             "src": "img/fav-192.png",
@@ -17,23 +17,23 @@
     ],
     "screenshots": [
         {
-            "src": "img/screenshot-1.jpg",
+            "src": "img/screenshot-1.png",
             "sizes": "1000x1600",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
-            "src": "img/screenshot-2.jpg",
+            "src": "img/screenshot-2.png",
             "sizes": "1000x1600",
-            "type": "image/jpeg"
+            "type": "image/png"
         }
     ],
-    "background_color": "#af0a1a",
-    "theme_color": "#af0a1a",
+    "background_color": "#fff",
+    "theme_color": "#fff",
     "display": "fullscreen",
     "orientation": "any",
     "start_url": ".",
     "url": "index.html",
     "scope": ".",
-    "lang": "fa-IR",
+    "lang": "en-EN",
     "dir": "rtl"
 }
