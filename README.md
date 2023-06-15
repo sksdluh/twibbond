@@ -2,7 +2,7 @@
 
 This is a website where you can add photos to frames.
 
-Demo [Twibbon App](https://sksdluh.github.io/twibbon-apk/)
+Demo [Twibbon App](https://twibbons.vercel.app/)
 
 
 
