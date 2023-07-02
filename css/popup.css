@@ -1,57 +1,32 @@
 .modal {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
+  position: fixed;
+  z-index: 5;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: 250ms opacity ease-in;
-}
-.modal__container {
-  background-color: white;
-  width: 26rem;
-  padding: 1.5rem;
-  border-radius: 0.2rem;
-}
-.modal__container h1 {
-  text-align: center;
-}
-.modal__container p {
-  line-height: 1.5rem;
-  border-top: 1px solid #eef1f6;
-  padding: 1rem 0;
-}
-.modal__buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
-}
-.modal-visible {
-  opacity: 1;
-  pointer-events: auto;
+  top: 0;
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.4);
 }
 
-button {
-  font-family: inherit;
-  padding: 0.4rem 0.8rem;
-  font-size: 1rem;
+.modal-content{
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
   cursor: pointer;
-  border: 1px solid #0e48fe;
-  border-radius: 0.2rem;
-}
-
-.btn-primary {
-  background-color: #0e48fe;
-  color: white;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: #0e48fe;
 }
