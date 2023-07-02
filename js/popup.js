@@ -1,12 +1,11 @@
-const modal = document.getElementById("modal");
-const btnSkip = document.getElementById("modal-skip");
+let modal = document.getElementById('welcome-modal')
+let span = document.getElementsByClassName('close')[0]
+span.onclick = function(){
+  modal.style.display = "none"
+}
 
-window.onload = (event) => {
-  setTimeout(() => modal.classList.add("modal-visible"), 2000);
-};
-
-//tap outside overlay or on cancel button to close window
-
-btnSkip.addEventListener("click", () => {
-  modal.classList.remove("modal-visible");
-});
+window.onclick = function(e){
+  if(e.target != modal){
+    modal.style.display = "none"
+  }
+}
