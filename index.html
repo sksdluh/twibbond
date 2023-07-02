@@ -19,6 +19,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="img/fav-144.png">
     <link rel="manifest" href="pwa-manifest.json">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popup.css">
     <style type="text/css">
     button, label, canvas, div {
       box-sizing: border-box;
@@ -191,10 +192,23 @@
 
     placeholder.onload = drawImageFromInput
   </script>
-    
+
+    <div class="modal" id="modal">
+    <div class="modal__container">
+      <h1>Welcome</h1>
+      <p>Welcome to Twibbon! Get started by viewing our step by step tutorial or jump into the dashboard view.</p>
+
+      <div class="modal__buttons">
+        <button class="btn-secondary" id="modal-skip">Skip</button>
+        <button class="btn-primary">Start Tutorial</button>
+      </div>
+    </div>
+  </div>
+        
   </article>
   <footer>
   <p><a target="_blank" rel="noopener" href="https://www.facebook.com/bungferry.wa">Copyright © 2023 Ferry Ayunda.</a></p>
 </footer>
+    <script type='text/javascript' src="js/popup.js"></script>
 </body>
 </html>
