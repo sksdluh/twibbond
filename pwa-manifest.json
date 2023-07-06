@@ -1,7 +1,7 @@
 {
     "name": "Twibbon App",
     "short_name": "Twibbon",
-    "description": "This is a website where you can add photos to frames.",
+    "description": "Ini adalah situs web tempat Anda dapat menambahkan foto ke bingkai.",
     "icons": [
         {
             "src": "img/fav-192.png",
